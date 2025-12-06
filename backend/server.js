@@ -48,9 +48,8 @@ app.post("/api/students", (req, res) => {
     if (!reg_num || !name || !cgpa)
       return res
         .status(400)
-        .json({ error: "reg_num, name, and cgpa required" });
+        .json({ error: "reg_num, name, and cgpa required" }); // Command format: add reg_num name age course_name cgpa
 
-    // Command format: add reg_num name age course_name cgpa
     const out = runC([
       "add",
       reg_num,
@@ -69,9 +68,8 @@ app.post("/api/students", (req, res) => {
 app.put("/api/students/:id", (req, res) => {
   try {
     // Retrieve new field: cgpa
-    const { reg_num, name, age, course_name, cgpa } = req.body;
+    const { reg_num, name, age, course_name, cgpa } = req.body; // Command format: update id reg_num name age course_name cgpa
 
-    // Command format: update id reg_num name age course_name cgpa
     const out = runC([
       "update",
       req.params.id,
@@ -87,12 +85,22 @@ app.put("/api/students/:id", (req, res) => {
   }
 });
 
-// DELETE (No change needed)
+// DELETE (Updated with logging)
 app.delete("/api/students/:id", (req, res) => {
   try {
+    console.log(`Attempting to delete ID: ${req.params.id}`);
     const out = runC(["delete", req.params.id]);
-    res.json(JSON.parse(out));
+    const parsed = JSON.parse(out || "null");
+
+    if (!parsed) return res.status(404).json({ error: "Not found" });
+
+    res.json(parsed);
   } catch (err) {
+    console.error("DELETE Error:", err.message);
+    console.error(
+      "C Program Output (if available):",
+      err.output ? err.output.toString() : "N/A"
+    );
     res.status(500).json({ error: err.message });
   }
 });

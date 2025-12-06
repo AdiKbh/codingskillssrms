@@ -101,7 +101,7 @@ void list_students() {
         if (!first) printf(",\n");
         first = 0;
 
-        // Updated JSON output
+        // Updated JSON output (uses "id")
         printf("{\"id\":%s,\"reg_num\":\"%s\",\"name\":\"%s\",\"age\":%s,\"course_name\":\"%s\",\"cgpa\":%s}",
                id_str, reg_num_str, name_str, age_str, course_str, cgpa_str);
     }
