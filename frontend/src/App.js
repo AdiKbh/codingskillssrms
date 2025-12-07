@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
@@ -62,10 +63,8 @@ function App() {
     }
   };
 
-  // Argument is now named 'id' for clarity
   const deleteStudent = async (id) => {
     try {
-      // Use 'id' in the API path
       await axios.delete(`${API}/${id}`);
       loadStudents();
     } catch (err) {
@@ -73,6 +72,8 @@ function App() {
     }
   };
 
+
+  //for updating student
   const editStudent = (student) => {
     setForm({
       reg_num: student.reg_num,
