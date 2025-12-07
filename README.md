@@ -11,7 +11,7 @@ Student Record Management system that allows the user to add, delete or edit exi
 ## Features
 
 - Add Student
-- <img width="1301" height="553" alt="image" src="https://github.com/user-attachments/assets/6e8947b3-7a02-4a63-a1f8-475e119b3fd5" />
+- <img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/6e8947b3-7a02-4a63-a1f8-475e119b3fd5" />
 
 
 - Delete Student
