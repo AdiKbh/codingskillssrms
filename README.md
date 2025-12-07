@@ -1,1 +1,1 @@
-# codingSkillsSRMS
+# CodingskillsSRMS
